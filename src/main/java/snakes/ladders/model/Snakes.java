@@ -1,38 +1,43 @@
 package snakes.ladders.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class Snakes implements Obstacles {
+public class Snakes implements Obstacle {
 
     public Snakes(Integer boardSize, Integer numberOfSnakes) {
+        positions.keySet().removeAll(positions.keySet());
         initSnakes(boardSize, numberOfSnakes);
     }
 
     private void initSnakes(Integer boardSize, Integer numberOfSnakes) {
-        int maxStart = boardSize - 1, minStart = (boardSize / 2) + 1;
-        int maxEnd = 1, minEnd = (boardSize / 2);
+        int maxStart = boardSize-1, minStart=2;
+        int maxEnd = boardSize-2, minEnd = 1;
         while (numberOfSnakes-- > 0) {
             Integer start = (int) (Math.random() * (maxStart - minStart + 1) + minStart);
-            if (position.containsKey(start)) {
+            if (positions.containsKey(start)) {
                 numberOfSnakes++;
                 continue;
             }
-            Integer tail = (int) (Math.random() * (maxEnd - minEnd + 1) + minEnd);
-            position.put(start, tail);
+            Integer tail = (int) (Math.random() * (start - minEnd) + minEnd);
+            positions.put(start, tail);
         }
+        System.out.println("Snake positions ->");
+        positions.forEach((key, value) -> System.out.println("\tHead: "+ key + "\t Tail: "+ value));
     }
 
     @Override
     public boolean isCollision(Integer positionToTest) {
-        return position.containsKey(positionToTest);
+        boolean collision = positions.containsKey(positionToTest);
+        if (collision) {
+            System.out.println("Collision with snake's head at: " + positionToTest
+            );
+        }
+        return collision;
     }
 
     @Override
     public Integer getNewPosition(Integer positionToTest) {
-        return position.get(positionToTest);
-    }
-
-    public Map<Integer, Integer> getAllSnakes() {
-        return position;
+        return positions.get(positionToTest);
     }
 }

@@ -9,9 +9,15 @@ import snakes.ladders.service.GameService;
 
 class SnakesAndLadder {
 
-    public static void main(String[] args) {
+    private static final Integer totalTries = 20;
+
+    private static final Integer boardSize = 100;
+
+    private static final Integer totalSnakes = 1;
+
+    public static Boolean main(String[] args) {
         GameService gameService = new GameService();
-        gameService.start();
+        return gameService.start(totalTries,boardSize,totalSnakes);
     }
 
 }

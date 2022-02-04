@@ -7,16 +7,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import snakes.ladders.service.GameService;
 
-@SpringBootApplication(exclude = {
-        DataSourceAutoConfiguration.class,
-        DataSourceTransactionManagerAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class
-})
 class SnakesAndLadder {
 
     public static void main(String[] args) {
-
-        SpringApplication.run(SnakesAndLadder.class, args);
         GameService gameService = new GameService();
         gameService.start();
     }

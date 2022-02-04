@@ -3,8 +3,8 @@ package snakes.ladders.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public interface Obstacles {
-    Map<Integer, Integer> position = new HashMap<>();
+public interface Obstacle {
+    Map<Integer, Integer> positions = new HashMap<>();
 
     boolean isCollision(Integer positionToTest);
 

@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-	@GetMapping("/hello")
-	public ResponseEntity<String> sayHello() {
+    @GetMapping("/hello")
+    public ResponseEntity<String> sayHello() {
 
-		return ResponseEntity.ok("Hello Spring Boot Boilerplate");
-	}
+        return ResponseEntity.ok("Hello Spring Boot Boilerplate");
+    }
 
 }

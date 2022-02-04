@@ -15,9 +15,9 @@ class SnakesAndLadder {
 
     private static final Integer totalSnakes = 1;
 
-    public static Boolean main(String[] args) {
+    public static void main(String[] args) {
         GameService gameService = new GameService();
-        return gameService.start(totalTries,boardSize,totalSnakes);
+        gameService.start(totalTries,boardSize,totalSnakes);
     }
 
 }

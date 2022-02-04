@@ -14,7 +14,7 @@ public class RuleEngine {
         obstacles.addAll(List.of(initObstacles));
     }
 
-    public void execute(Player player, Integer diceValue, Integer boardSize) {
+    public void executeRules(Player player, Integer diceValue, Integer boardSize) {
         if (player.getPosition() + diceValue >= boardSize) {
             player.setPosition(boardSize);
             return;
@@ -22,7 +22,7 @@ public class RuleEngine {
         for (Obstacle obstacle : obstacles) {
             if (obstacle.isCollision(player.getPosition() + diceValue)) {
                 player.setPosition(obstacle.getNewPosition(player.getPosition() + diceValue));
-                execute(player, 0, boardSize);
+                executeRules(player, 0, boardSize);
                 return;
             }
         }
